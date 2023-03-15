@@ -85,10 +85,9 @@ bot.on('callback_query', (query) => {
         let randomIndexForSasha3 = Math.floor(Math.random() * (sports.length - 1)); // генерируем случайный индекс в допустимом диапазоне Сашка 3
         let randomIndexForAll = Math.floor(Math.random() * (study.length - 1)); // генерируем случайный индекс в допустимом диапазоне для всех
         if (randomIndexForNastya == randomIndexForSasha || randomIndexForNastya2 == randomIndexForNastya || randomIndexForNastya2 == randomIndexForSasha2 || randomIndexForSasha2 == randomIndexForSasha || randomIndexForNastya2 == randomIndexForSasha2) {
-            let randomIndexForNastya = Math.floor(Math.random() * (numbers.length - 1)); // генерируем случайный индекс в допустимом диапазоне Настька
-            let randomIndexForSasha = Math.floor(Math.random() * (numbers.length - 1)); // генерируем случайный индекс в допустимом диапазоне Сашка
+        const nonResult = 'Не получилось, давай по новой';
             result = resultForNastya + resultForSasha;
-            bot.sendMessage(chatId, result, { // прикрутим клаву
+            bot.sendMessage(chatId, nonResult, { // прикрутим клаву
             reply_markup: {
                 inline_keyboard: keyboard
             }
