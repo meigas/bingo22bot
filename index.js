@@ -4,7 +4,7 @@ const keyboard = [
     [
       {
         text: 'Запустить бинго шоу', // текст на кнопке
-        callback_data: 'moreKeks' // данные для обработчика событий
+        callback_data: 'moreKeks' 
       }
   ],
  [
@@ -36,7 +36,7 @@ bot.on('callback_query', (query) => {
     let img = '';
 
     if (query.data === 'moreKeks') { // если кот
-        const numbers = ['вы сегодня пылесосите', 
+        const numbers = ['вы сегодня пылесосите ', 
         'вы сегодня протираете экраны на всех устройствах', 
         'не нервничать', 
         'не материться', 
