@@ -86,12 +86,12 @@ bot.on('callback_query', (query) => {
         let randomIndexForAll = Math.floor(Math.random() * (study.length - 1)); // генерируем случайный индекс в допустимом диапазоне для всех
         if (randomIndexForNastya == randomIndexForSasha || randomIndexForNastya2 == randomIndexForNastya || randomIndexForNastya2 == randomIndexForSasha2 || randomIndexForSasha2 == randomIndexForSasha || randomIndexForNastya2 == randomIndexForSasha2) {
         const nonResult = 'Не получилось, давай по новой';
-            result = resultForNastya + resultForSasha;
-            bot.sendMessage(chatId, nonResult, { // прикрутим клаву
+        result = nonResult;
+        bot.sendMessage(chatId, result, { // прикрутим клаву
             reply_markup: {
                 inline_keyboard: keyboard
             }
-        });
+            });
         } else {
         const resultForNastya = "Настьку:\n" + numbers[randomIndexForNastya] + '\n' + numbers[randomIndexForNastya2] + '\n' + sports[randomIndexForNastya3] + '\n'; // извлекаем значение под случайным индексом
         const resultForSasha = "\nСашку:\n" + numbers[randomIndexForSasha] + '\n' + numbers[randomIndexForSasha2] + '\n' + sports[randomIndexForSasha3] + '\n'; // извлекаем значение под случайным индексом
