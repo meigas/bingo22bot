@@ -13,13 +13,7 @@ const keyboard = [
           callback_data: 'morePes'
         }
     ],
-      /*   [
-        {
-          text: 'Хочу проходить курсы',
-          url: 'https://htmlacademy.ru/continue' //внешняя ссылка
-        }
-      ]*/
-  ];
+    ];
 
 // обработчик события присылания нам любого сообщения
 bot.on('message', (msg) => {
@@ -42,10 +36,55 @@ bot.on('callback_query', (query) => {
     let img = '';
 
     if (query.data === 'moreKeks') { // если кот
-        const numbers = ['вы сегодня пылесосите', 'вы сегодня протираете экраны на всех устройствах', 'не нервничать', 'не материться', 'не рыгать', 'мыть посуду', 'вы сегодня готовите', 'не разговариваться на "вы"', 'протираете сегодня пыль', 'не намекать на алкоголь', 'не цокать', 'вы сегодня должны закрыть все кольца'];
+        const numbers = ['вы сегодня пылесосите', 
+        'вы сегодня протираете экраны на всех устройствах', 
+        'не нервничать', 
+        'не материться', 
+        'не рыгать', 
+        'мыть посуду', 
+        'вы сегодня готовите', 
+        'не разговариваться на "вы"', 
+        'протираете сегодня пыль', 
+        'не намекать на алкоголь', 
+        'не цокать',
+        'волосы расчестка',
+        'вынести мусор',
+        'выполнить обязанность по дому',
+        'навести порядок на балконе',
+        'помыть холодильник',
+        'не делать мерзотных вещей: рыгать, чесать мудя и пр.',
+        'не петь и не напевать и не ссылаться на песни Пистолетова',
+        'не добавлять сашульков и настюльков и не просить рубли дольяры',
+        'помыть окно',
+        'протереть люстру',
+        'зарядить для всех щетки',
+        'не оскорблять людей'];
+        const sports = ['закрыть ВСЕ кольца',
+        'закрыть зеленое кольцо',
+        'закрыть красное кольцо',
+        'закрыть синее кольцо', 
+        'закрыть зеленое кольцо',
+        'закрыть красное кольцо',
+        'закрыть синее кольцо', 
+        'присесть не менее 40 раз',
+        'увеличить на 5% красное кольцо',
+        'увеличить на 5% зеленое кольцо',
+        'выпить 5 бутылок воды'];
+        const study = ['Не менее 20 Duolingo',
+        'Не менее 30 чтения',
+        'Не менее 3 занятий в топвизоре или в другом (не менее 30 минут)',
+        'Сыграть в настолку',
+        'Раскрасить 1 картинку в котиках',
+        'Не менее 15 минут поучить НЕ английский язык',
+        'Посмотреть 1 серию свинки Пеппы на английском'];
         let randomIndexForNastya = Math.floor(Math.random() * (numbers.length - 1)); // генерируем случайный индекс в допустимом диапазоне Настька
         let randomIndexForSasha = Math.floor(Math.random() * (numbers.length - 1)); // генерируем случайный индекс в допустимом диапазоне Сашка
-        if (randomIndexForNastya == randomIndexForSasha) {
+        let randomIndexForNastya2 = Math.floor(Math.random() * (numbers.length - 1)); // генерируем случайный индекс в допустимом диапазоне Настька 2
+        let randomIndexForSasha2 = Math.floor(Math.random() * (numbers.length - 1)); // генерируем случайный индекс в допустимом диапазоне Сашка 2
+        let randomIndexForNastya3 = Math.floor(Math.random() * (sports.length - 1)); // генерируем случайный индекс в допустимом диапазоне Настька 3
+        let randomIndexForSasha3 = Math.floor(Math.random() * (sports.length - 1)); // генерируем случайный индекс в допустимом диапазоне Сашка 3
+        let randomIndexForAll = Math.floor(Math.random() * (study.length - 1)); // генерируем случайный индекс в допустимом диапазоне для всех
+        if (randomIndexForNastya == randomIndexForSasha || randomIndexForNastya2 == randomIndexForNastya || randomIndexForNastya2 == randomIndexForSasha2 || randomIndexForSasha2 == randomIndexForSasha || randomIndexForNastya2 == randomIndexForSasha2) {
             let randomIndexForNastya = Math.floor(Math.random() * (numbers.length - 1)); // генерируем случайный индекс в допустимом диапазоне Настька
             let randomIndexForSasha = Math.floor(Math.random() * (numbers.length - 1)); // генерируем случайный индекс в допустимом диапазоне Сашка
             result = resultForNastya + resultForSasha;
@@ -55,12 +94,14 @@ bot.on('callback_query', (query) => {
             }
         });
         } else {
-        const resultForNastya = "Настьку:\n" + numbers[randomIndexForNastya] + '\n'; // извлекаем значение под случайным индексом
-        const resultForSasha = "Сашку:\n" + numbers[randomIndexForSasha] + '\n'; // извлекаем значение под случайным индексом
-        result = resultForNastya + resultForSasha;
+        const resultForNastya = "Настьку:\n" + numbers[randomIndexForNastya] + '\n' + numbers[randomIndexForNastya2] + '\n' + sports[randomIndexForNastya3] + '\n'; // извлекаем значение под случайным индексом
+        const resultForSasha = "\nСашку:\n" + numbers[randomIndexForSasha] + '\n' + numbers[randomIndexForSasha2] + '\n' + sports[randomIndexForSasha3] + '\n'; // извлекаем значение под случайным индексом
+        const resultForAll = "\nОбучающее для всех:\n" + study[randomIndexForAll] + '\n'; // извлекаем значение под случайным индексом
+        result = resultForNastya + resultForSasha + resultForAll;
         bot.sendMessage(chatId, result, { // прикрутим клаву
             reply_markup: {
-                inline_keyboard: keyboard
+                inline_keyboard: keyboard,
+                parse_mode: "HTML",
             }
         });
     }
